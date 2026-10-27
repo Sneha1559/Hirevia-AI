@@ -1,8 +1,18 @@
-\# Hirevia AI – Goal-Based Multi-Agent Resume Screening System
+\# Hirevia AI
 
 
 
-Hirevia AI is an AI-powered resume screening system that automates candidate evaluation by comparing resumes with job descriptions using a multi-agent architecture, Hybrid Retrieval-Augmented Generation (RAG), and a Large Language Model (LLM).
+**Goal-Based Multi-Agent Resume Screening System Using Hybrid RAG and LLM**
+
+
+
+Hirevia AI is an AI-powered resume screening system that automates candidate evaluation by matching resumes with job descriptions using Hybrid Retrieval-Augmented Generation (RAG), Large Language Models (LLMs), and a multi-agent architecture.
+
+
+
+The system helps recruiters analyze candidate profiles, generate screening scores, rank applicants, understand candidate strengths and potential gaps, and notify shortlisted candidates.
+
+
 
 
 
@@ -10,51 +20,27 @@ Hirevia AI is an AI-powered resume screening system that automates candidate eva
 
 
 
-\- \*\*Resume Upload:\*\* Upload and process candidate resumes in PDF format.
+\- Resume Parsing:\*\* Extract text from PDF resumes.
 
-\- \*\*Job Description Analysis:\*\* Analyze job requirements and identify relevant skills.
+\- Job Description Analysis:\*\* Identify required skills and qualifications.
 
-\- \*\*Hybrid RAG:\*\* Combines dense retrieval, sparse BM25 retrieval, and multi-query retrieval to find relevant evidence from resumes.
+\- Hybrid RAG:\*\* Combine dense retrieval, BM25 sparse retrieval, and multi-query retrieval.
 
-\- \*\*Multi-Agent Screening:\*\* Uses specialized agents to evaluate candidates and generate screening results.
+\- Multi-Agent Screening:\*\* Analyze candidate profiles through specialized AI agents.
 
-\- \*\*Candidate Scoring and Ranking:\*\* Scores candidates, ranks them, and generates recommendations based on a configurable threshold.
+\- Candidate Scoring:\*\* Generate candidate evaluation scores.
 
-\- \*\*Strengths and Red Flags:\*\* Identifies relevant candidate strengths and potential gaps.
+\- Candidate Ranking:\*\* Rank candidates based on screening results.
 
-\- \*\*Explainable Results:\*\* Provides explanations to support screening decisions.
+\- Strengths and Red Flags:\*\* Highlight relevant strengths and potential skill gaps.
 
-\- \*\*Email Notifications:\*\* Sends recruiter summaries and shortlist notifications to candidates.
+\- Explainable Results:\*\* Generate explanations and recommendations.
 
-\- \*\*Result Tracking:\*\* Stores screening results and email status using SQLite.
+\- Configurable Threshold:\*\* Set a minimum screening score.
 
+\- Email Notifications:\*\* Send recruiter summaries and shortlisted-candidate emails.
 
-
-\## Technology Stack
-
-
-
-| Component | Technologies |
-
-|---|---|
-
-| Programming Language | Python |
-
-| User Interface | Streamlit |
-
-| Agent Orchestration | LangGraph |
-
-| LLM Integration | Groq API, Llama 3.3 |
-
-| Retrieval | Dense Retrieval, BM25, Multi-Query Retrieval |
-
-| Vector Search | FAISS |
-
-| Embeddings | Sentence Transformers |
-
-| Database | SQLite |
-
-| Data Processing | Pandas, NumPy |
+\- Result Tracking:\*\* Store screening information and email status using SQLite.
 
 
 
@@ -62,19 +48,101 @@ Hirevia AI is an AI-powered resume screening system that automates candidate eva
 
 
 
-1\. The recruiter uploads resumes and a job description.
+Recruiter Uploads Resumes and Job Description
 
-2\. The system extracts and preprocesses resume text.
+&#x20;                   |
 
-3\. The job requirements and resume content are processed through Hybrid RAG.
+&#x20;                   v
 
-4\. The LLM and multi-agent workflow evaluate candidate profiles.
+&#x20;          Resume Preprocessing
 
-5\. Candidates receive scores, rankings, recommendations, and explanations.
+&#x20;                   |
 
-6\. The recruiter reviews results and can send shortlist notifications.
+&#x20;                   v
 
-7\. Screening history and email statuses are stored in the database.
+&#x20;            Hybrid RAG
+
+&#x20;      Dense + BM25 + Multi-Query
+
+&#x20;                   |
+
+&#x20;                   v
+
+&#x20;         Multi-Agent Screening
+
+&#x20;                   |
+
+&#x20;                   v
+
+&#x20;         LLM-Based Evaluation
+
+&#x20;                   |
+
+&#x20;                   v
+
+&#x20;         Scoring and Ranking
+
+&#x20;                   |
+
+&#x20;                   v
+
+&#x20;      Candidate Results and Reports
+
+&#x20;                   |
+
+&#x20;                   v
+
+&#x20;           Email Notifications
+
+
+
+\## Technology Stack
+
+
+
+| Component - Technology 
+
+| Programming Language - Python 
+
+| User Interface - Streamlit 
+
+| Agent Orchestration - LangGraph 
+
+| LLM Provider - Groq API 
+
+| Language Model - Llama 3.3 
+
+| Dense Retrieval - Sentence Transformers 
+
+| Sparse Retrieval - BM25 
+
+| Vector Search - FAISS 
+
+| Database - SQLite 
+
+| Data Processing - Pandas, NumPy 
+
+| Testing - Pytest 
+
+
+
+\## Hybrid RAG
+
+
+
+Hirevia AI uses three retrieval methods to find relevant information for candidate evaluation.
+
+
+
+1\. Dense Retrieval:\*\* Finds semantically relevant resume content using embeddings.
+
+2\. Sparse Retrieval (BM25):\*\* Retrieves content based on keyword relevance.
+
+3\. Multi-Query Retrieval:\*\* Uses alternative queries to find additional relevant information.
+
+
+
+The retrieved evidence is combined and provided as context to the LLM, supporting candidate analysis and explainable screening results.
 
 
 
@@ -82,31 +150,33 @@ Hirevia AI is an AI-powered resume screening system that automates candidate eva
 
 
 
-```text
-
 Hirevia-AI/
 
-├── agents/       # Specialized AI agents
+|
 
-├── core/         # Core screening workflow
+|-- agents/       # Specialized AI agents
 
-├── models/       # Data models
+|-- core/         # Core screening workflow
 
-├── rag/          # Hybrid RAG components
+|-- models/       # Data models
 
-├── tests/        # Project tests
+|-- rag/          # Hybrid RAG implementation
 
-├── utils/        # Helper utilities and email notifications
+|-- tests/        # Automated tests
 
-├── app.py        # Streamlit application
+|-- utils/        # Utility and email functions
 
-├── .env.example  # Example environment configuration
+|
 
-├── .gitignore
+|-- app.py        # Streamlit application
 
-└── README.md
+|-- .env.example  # Example environment variables
 
-```
+|-- .gitignore    # Git exclusions
+
+|-- README.md     # Project documentation
+
+
 
 
 
@@ -114,81 +184,73 @@ Hirevia-AI/
 
 
 
-\### 1. Clone the repository
+\### 1. Clone the Repository
 
 
-
-```bash
 
 git clone https://github.com/Sneha1559/Hirevia-AI.git
 
 cd Hirevia-AI
 
-```
 
 
 
-\### 2. Create a virtual environment
+
+\### 2. Create a Virtual Environment
 
 
-
-```bash
 
 python -m venv venv
 
-```
 
 
 
-Activate it on Windows:
+
+Activate the environment on Windows PowerShell: .\\venv\\Scripts\\Activate.ps1
 
 
 
-```powershell
 
-.\\venv\\Scripts\\activate
 
-```
+\### 3. Install Dependencies
 
 
 
-\### 3. Install dependencies
+If the repository contains a `requirements.txt` file, run: pip install -r requirements.txt
 
 
 
-If a `requirements.txt` file is available:
+
+
+\### 4. Configure Environment Variables
 
 
 
-```bash
-
-pip install -r requirements.txt
-
-```
+Create a `.env` file using `.env.example` as a reference. Add your Groq API key and any other configuration required by your application.
 
 
 
-\### 4. Configure environment variables
+GROQ\_API\_KEY=your\_groq\_api\_key
 
 
 
-Create a `.env` file based on `.env.example` and add your own Groq API key and any required email configuration.
+
+
+Use the exact variable names expected by your code. Never upload real API keys or email credentials to GitHub.
 
 
 
-\*\*Never commit your `.env` file or API keys to GitHub.\*\*
+\### 5. Run the Application
 
 
-
-\### 5. Run the application
-
-
-
-```bash
 
 python -m streamlit run app.py
 
-```
+
+
+
+
+Open the local URL displayed in the terminal to access the application.
 
 
 
@@ -196,27 +258,39 @@ python -m streamlit run app.py
 
 
 
-Run the project's available tests with:
+If Pytest is configured in the project, run: python -m pytest tests/
 
 
 
-```bash
 
-python -m pytest tests/
 
-```
+\## Security and Privacy
 
 
 
-\## Security
+\- Keep API keys and credentials in environment variables.
+
+\- Do not commit `.env` files or private configuration.
+
+\- Avoid uploading databases containing personal candidate information.
+
+\- Review AI-generated screening recommendations before making recruitment decisions.
 
 
 
-\- Keep API keys and email credentials private.
+\## Future Enhancements
 
-\- Do not commit local databases or sensitive candidate information.
 
-\- Use environment variables for secrets.
+
+\- Improve retrieval relevance evaluation.
+
+\- Expand candidate comparison and screening analytics.
+
+\- Enhance screening history and audit trails.
+
+\- Integrate with additional recruitment platforms.
+
+\- Strengthen privacy and access controls.
 
 
 
@@ -224,17 +298,17 @@ python -m pytest tests/
 
 
 
-\*\*Project:\*\* Hirevia AI  
+Project Name: Hirevia AI  
 
-\*\*Category:\*\* Artificial Intelligence, Natural Language Processing, Information Retrieval  
+Project Type: B.Tech Final-Year Project  
 
-\*\*Purpose:\*\* Goal-based, explainable resume screening and candidate ranking
-
-
-
-\---
+Domain:Artificial Intelligence, Natural Language Processing, Information Retrieval
 
 
 
-\*Developed as a B.Tech final-year project.\*
+GitHub Repository: https://github.com/Sneha1559/Hirevia-AI
+
+
+
+**"Hirevia AI — Making resume screening smarter, faster, and more explainable."**
 
